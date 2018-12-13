@@ -9,9 +9,4 @@ FactoryGirl.define do
     title nil
     text nil
   end
-
-  factory :comment do
-    commenter 'Jim Bob'
-    body 'What a great article you have.'
-  end
 end

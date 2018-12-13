@@ -81,14 +81,13 @@ RSpec.describe ArticlesController, :type => :controller do
       let(:article) { create(:article) }
       
       before(:each) do
-        @article = create(:article)
-        put :update, params: { id: @article.id, article: invalid_attr }
-        @article.reload
+        put :update, params: { id: article.id, article: invalid_attr }
+        article.reload
       end
 
       it { expect(response).to render_template("edit") } # re-renders edit w/ invalid
-      it { expect(@article.title).to eq('My Article') } # factory article title
-      it { expect(@article.text).to eq('This is my article text.') } # factory text
+      it { expect(article.title).to eq('My Article') } # factory article title
+      it { expect(article.text).to eq('This is my article text.') } # factory text
     end
   end
 
