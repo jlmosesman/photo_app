@@ -2,6 +2,10 @@ require "rails_helper"
 require "spec_helper"
 
 RSpec.describe ArticlesController, :type => :controller do
+  include AuthHelper
+  before(:each) do
+    http_login
+  end
 
   describe "article" do
     it "creates article" do
