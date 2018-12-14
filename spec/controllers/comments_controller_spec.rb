@@ -28,4 +28,14 @@ RSpec.describe CommentsController, type: :controller do
       expect(Comment.count).to eq(2)
     end
   end
+
+  describe "DELETE #destroy" do
+    it "deletes comment" do
+      article = create(:article_with_comments) # article w/ 3 comments
+      expect(Comment.count).to eq(3)
+      delete :destroy, params: { article_id: article.id,
+                                 id: article.comments.first.id }
+      expect(Comment.count).to eq(2)
+    end
+  end
 end
