@@ -55,6 +55,19 @@ RSpec.describe User, type: :model do
     expect(user.errors.first).to eq([:password, "can't be blank"])
   end
 
+  it "can't have blank email" do
+    user = User.new(
+      first_name: 'Bob',
+      last_name: 'Smith',
+      email: ' ',
+      password: 'password',
+      password_confirmation: 'password'
+    )
+    user.validate
+
+    expect(user.errors.first).to eq([:email, "can't be blank"])
+  end
+
   it "requires 6 minimum length of password" do
     user = User.new(
       first_name: 'Bob',

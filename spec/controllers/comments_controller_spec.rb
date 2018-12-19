@@ -2,11 +2,6 @@ require 'rails_helper'
 require "spec_helper"
 
 RSpec.describe CommentsController, type: :controller do
-  include AuthHelper
-  before(:each) do
-    http_login
-  end
-  
   describe "comment" do
     it "creates comment" do
       comment = create(:comment)
